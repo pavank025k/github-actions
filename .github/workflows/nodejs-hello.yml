@@ -1,0 +1,41 @@
+# Workflow name (appears in GitHub Actions dashboard)
+name: Node.js Hello Message
+
+# --- Trigger Conditions ---
+# When should this workflow run?
+on:
+  # Trigger on pushes to the 'main' branch
+  push:
+    branches: [ "main" ]
+  # Also trigger on pull requests targeting 'main'
+  pull_request:
+    branches: [ "main" ]
+
+# --- Jobs Section ---
+# A workflow can have multiple jobs; here we define one called 'hello'
+jobs:
+  hello:
+    # Run on the latest Ubuntu runner (GitHub-hosted Linux machine)
+    runs-on: ubuntu-latest
+
+    # --- Steps to Execute ---
+    steps:
+      # Step 1: Checkout repository code
+      # Required to access files in the repo
+      - name: Checkout code
+        uses: actions/checkout@v4  # Official GitHub action for code checkout
+
+      # Step 2: Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3  # Official action for Node.js
+        with:
+          node-version: '20'  # Specifies Node.js version 20
+
+      # Step 3: Log a custom greeting message
+      - name: Log greeting
+        run: |
+          echo "----------------------------------------"
+          echo "Hello from @your_github_username 👋"  # Replace with your username!
+          echo "Node.js version: $(node --version)"
+          echo "----------------------------------------"
+        shell: bash  # Explicitly use bash for better formatting
