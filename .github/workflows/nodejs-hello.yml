@@ -35,7 +35,7 @@ jobs:
       - name: Log greeting
         run: |
           echo "----------------------------------------"
-          echo "Hello from pavank025k 👋"  # Replace with your username!
+          echo "Hello from @pavank025k 👋"  # Replace with your username!
           echo "Node.js version: $(node --version)"
           echo "----------------------------------------"
         shell: bash  # Explicitly use bash for better formatting
